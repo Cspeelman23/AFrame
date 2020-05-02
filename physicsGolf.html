@@ -122,10 +122,10 @@
 
     <!-- holes -->
     <a-entity id="hole" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="-8.5 .2 0" glow="color: #ff8080; intensity: 0.2" ></a-entity>
-    <a-entity id="hole2" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="-5.69273 0.1 -9.6" glow="color: #ff8080; intensity: 0.5"></a-entity>
+    <a-entity id="hole2" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="-5.69273 0.2 -9.6" glow="color: #ff8080; intensity: 0.5"></a-entity>
     <a-entity id="hole3" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="4.43 .2 3.4" glow="color: #ff8080; intensity: 0.5"></a-entity>
     <a-entity id="hole4" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="3.17291 1.18422 -9.50164" glow="color: #ff8080; intensity: 0.5"></a-entity>-->
-    <a-entity id="hole5" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="19.98954 1.18422 -3.17928" glow="color: #ff8080; intensity: 0.5"></a-entity>
+    <a-entity id="hole5" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="19.98954 .2 -3.17928" glow="color: #ff8080; intensity: 0.5"></a-entity>
 
     
     <!-- walls -->
@@ -146,6 +146,9 @@
     <a-entity id="corner_gaurd-5" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="5.04122 5 5.81963" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
     <a-entity id="corner_gaurd-6" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-1.52056 5 -1.66597" rotation="0 132.97 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
     <a-entity id="corner_gaurd-7" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="9.89229 5 -10.34238" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-8" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="11.4 5 -10.34238" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-9" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="36.8 5 -10.34238" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-10" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="36.8 5 6" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
     
     
     <!-- obstacles -->
@@ -177,7 +180,26 @@
       <a-entity id="guide_rail-2" static-body="sphereRadius: NaN" geometry="depth: 0.09; height: 0.34; width: 2.72" material="color: #550d5e" position="1.90511 0.2489 -7.07894" rotation="0 250.00000000000003 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
       <a-entity id="guide_rail-3" static-body="sphereRadius: NaN" geometry="depth: 1.36; height: 1.77; width: 1.15" material="color: #550d5e" position="3.20826 0.18067 -1.90361" rotation="0 135 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
       <!-- 5  chaos-->
-      
+      <a-entity id="ball-2" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #80ff00; emissive: #80ff00" position="20 0.39999803009898327 -6.84444" quaternion="2.3771195848903374e-20 0 0 1" glow="color: #35cabb" scale="2 2 2" velocity="" light="color: #80ff00; groundColor: #00ff00; intensity: 0.21; type: point"></a-entity>
+      <a-entity id="ball-3" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ff00ff; emissive: #ff80ff" position="25.13574 0.39998 -4.83825" quaternion="" glow="color: #35cabb" light="color: #80ff00; groundColor: #00ff00; intensity: 0.21; type: point"></a-entity>
+      <a-entity id="ball-4" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ff00ff" position="22.11452 0.39998 -1.44353" quaternion="" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-5" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ff8040; emissive: #ff8000" position="16.62788 0.39998 -4.88895" quaternion="-2.9785277613318716e-15 0 0 1" glow="color: #35cabb" velocity="" rotation="-3.413141397737312e-13 0 0"></a-entity>
+      <a-entity id="ball-6" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #0000ff; emissive: #004080" position="13.68072 0.39998 -3.19601" quaternion="" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-7" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb; emissive: #8000ff" position="14.625 0.39998 0" quaternion="" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-8" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb; emissive: #00ff40" position="17.12551 0.39998 0" quaternion="" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-9" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #800000; emissive: #ff8000" position="20 0.39998 1.45375" quaternion="" light="color: #80ff00; groundColor: #00ff00; intensity: 0.21; type: point" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-10" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #800000; emissive: #ff8000" position="20 0.39998 1.45375" quaternion="" glow="color: #35cabb" scale="2 2 2"></a-entity>
+      <a-entity id="ball-11" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb" position="29.32929 0.39998 -3.4417" quaternion="" glow="color: #35cabb" scale="2 2 2"></a-entity>
+      <a-entity id="ball-12" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #80ff00; emissive: #80ff00" position="20 0.4 3.22625" quaternion="3.846515936820936e-20 0 0 1" glow="color: #ff0080" scale="2 2 2" ></a-entity>
+      <a-entity id="ball-13" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ffff00; emissive: #00ff40" position="14.96024 0.4 -8.25444" quaternion="-8.001963525542178e-15 0 0 1" glow="color: #35cabb" velocity="" scale="2 2 2"></a-entity>
+      <a-entity id="ball-14" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ff00ff" position="24.14006 0.4 1.75478" quaternion="3.8465159368201924e-20 0 0 1" glow="color: #8000ff" ></a-entity>
+      <a-entity id="ball-15" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #8080ff; emissive: #8000ff" position="16.58418 0.4 1.76319" quaternion="-8.001963525542178e-15 0 0 1" glow="color: #8080c0" ></a-entity>
+      <a-entity id="ball-16" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #ffff80; emissive: #ffff80" position="28.80134 2.5 -6.86908" quaternion="2.251652271836079e-16 0 0 1" glow="color: #ffff80" scale="3 3 3" ></a-entity>
+      <a-entity id="ball-17" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb; emissive: #8000ff" position="28.625 0.39998 0" quaternion="" glow="color: #35cabb" light="color: #80ff00; groundColor: #00ff00; intensity: 0.21; type: point"></a-entity>
+      <a-entity id="ball-18" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb; emissive: #00ff40" position="17.12551 0.39998 3" quaternion="" glow="color: #35cabb"></a-entity>
+      <a-entity id="ball-19" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #800000; emissive: #ff8000" position="36.64621 2.5 3.26328" quaternion="4.808682566818817e-13 0 0 1" glow="color: #35cabb" scale="3 3 3" velocity=""></a-entity>
+      <a-entity id="ball-20" dynamic-body="sphereRadius: 0.2" geometry="primitive: sphere; radius: 0.2" material="color: #0000ff; emissive: #004080" position="16.68072 0.39998 -2.19601" quaternion="" glow="color: #35cabb"></a-entity>
+
 
 
     <!-- floor -->
