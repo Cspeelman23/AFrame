@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript - A-Frame School</title>
+    <meta name="description" content="JavaScript - A-Frame School">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script>
+      AFRAME.registerComponent('school-playground', {
+        init: function () {
+          // Solution for Handling Events.
+          var sceneEl = document.querySelector('a-scene'); 
+          var boxEl = sceneEl.querySelector('a-box')
+         
+          boxEl.addEventListener('mouseenter', function () {
+            boxEl.setAttribute('color', 'aqua');  
+          });
+          boxEl.addEventListener('mouseleave', function () {
+            boxEl.setAttribute('color', 'purple');  
+          });
+        }
+      });
+        AFRAME.registerComponent('handle-events', {
+        init: function () {
+          var el = this.el;  // <a-box>
+          el.addEventListener('click', function () {
+            el.setAttribute('color', 'black');  
+          });
+          el.addEventListener('click', function () {
+            el.setAttribute('scale', {x: 2, y: 1, z: 2});
+          });
+        } 
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene school-playground>
+      <a-camera><a-cursor></a-cursor></a-camera>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" handle-events></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" handle-events></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" handle-events></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" handle-events></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Mini-Golf</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/gh/feiss/aframe-environment-component@master/dist/aframe-environment-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.0/dist/aframe-extras.min.js"></script>
+  <script>      
+    AFRAME.registerComponent('golf', {
+     init: function (){
+      var sceneEl = document.querySelector('a-scene');
+      var hole = sceneEl.querySelector('#hole')
+      var ball = sceneEl.querySelector('#ball')
+      
+     
+       hole.emit('collide', {collidingEntity: this});
+         console.log("woooo");
+      hole.addEventListener('collide', function (event) {
+          if(event.detail.body.id){ // .id == ball?
+            console.log("collided");
+            hole.setAttribute('material', 'color', 'yellow');
+            hole.setAttribute('glow', 'color', '#FFED9E'); 
+             hole.setAttribute('particle-system', 'color: #F2CE1B; velocityValue: 0 2 0; size:.25; velocitySpread: 1 3 1; maxAge: .5; positionSpread: 0 4 0; duration: 2');
+          }
+        });
+        var hole2 = sceneEl.querySelector('#hole2')
+          hole2.emit('collide', {collidingEntity: this});
+         console.log("woooo2");
+      hole2.addEventListener('collide', function (event) {
+          if(event.detail.body.id){ // .id == ball?
+            console.log("collided");
+            hole2.setAttribute('material', 'color', '#005EFA'); 
+            hole2.setAttribute('glow', 'color', 'blue'); 
+             hole2.setAttribute('particle-system', 'color: #001EBA; velocityValue: 0 2 0; size:.25; velocitySpread: 1 3 1; maxAge: .5; positionSpread: 0 4 0;duration: 2');
+          }
+        });
+         var hole3 = sceneEl.querySelector('#hole3')
+          hole3.emit('collide', {collidingEntity: this});
+         console.log("woooo3");
+      hole3.addEventListener('collide', function (event) {
+          if(event.detail.body.id){ // .id == ball?
+            console.log("collided");
+            hole3.setAttribute('material', 'color', '#FFA600'); 
+            hole3.setAttribute('glow', 'color', 'orange'); 
+             hole3.setAttribute('particle-system', 'color: #FFA600; velocityValue: 0 2 0; size:.25; velocitySpread: 1 3 1; maxAge: .5; positionSpread: 0 4 0; duration: 2');
+          }
+        });
+      var hole4 = sceneEl.querySelector('#hole4')
+          hole4.emit('collide', {collidingEntity: this});
+         console.log("woooo4");
+      hole4.addEventListener('collide', function (event) {
+          if(event.detail.body.id){ // .id == ball?
+            console.log("collided");
+            hole4.setAttribute('material', 'color', '#54B61F'); 
+            hole4.setAttribute('glow', 'color', 'green'); 
+             hole4.setAttribute('particle-system', 'color: #82BF65; velocityValue: 0 2 0; size:.25; velocitySpread: 1 3 1; maxAge: .5; positionSpread: 0 4 0; duration: 2');
+          }
+        });
+      var hole5 = sceneEl.querySelector('#hole5')
+          hole5.emit('collide', {collidingEntity: this});
+         console.log("woooo5");
+      hole5.addEventListener('collide', function (event) {
+          if(event.detail.body.id){ // .id == ball?
+            console.log("collided");
+            hole5.setAttribute('material', 'color', '#FFF'); 
+            hole5.setAttribute('glow', 'color', 'white'); 
+             hole5.setAttribute('particle-system', 'color: #FFF; velocityValue: 0 2 0; size:.25; velocitySpread: 1 3 1; maxAge: .5; positionSpread: 0 4 0; duration: 5');
+          }
+        });
+
+     }     
+    });
+
+//https://github.com/donmccurdy/aframe-extras/blob/master/examples/castle/index.html
+    AFRAME.registerComponent('glow', {
+      schema: {
+        color: {default: '#ffffff', type: 'color'},
+        intensity: {default: 1.0}
+      },
+      init: function () {
+        this.el.addEventListener('object3dset', function () {
+          this.update();
+        }.bind(this));
+      },
+      update: function () {
+        var data = this.data;
+        this.el.object3D.traverse(function (node) {
+          if (node.isMesh) {
+            node.material.emissive.copy(new THREE.Color(data.color));
+            node.material.emissiveIntensity = data.intensity;
+          }
+        });
+      }
+    });
+
+
+
+</script>
+</head>
+
+<body>
+
+  <a-scene golf>
+
+    <!-- Camera -->
+    <a-entity
+    camera
+    position="-8.5 .7 5"
+    kinematic-body
+    look-controls
+    universal-controls>
+    </a-entity>
+
+   <!-- <a-entity id="lightSphere2" geometry="primitive: sphere; radius: 0.2" material="shader: flat" light="type: directional; color: #14124D" position="-4 3 -4"></a-entity> -->
+
+    <!-- golf ball -->
+    <a-entity id="ball" dynamic-body="sphereRadius: .2" geometry="primitive: sphere; radius: 0.2" material="color: #35cabb" position="-8.5 0.2 2.8" quaternion="-2.277522645137369e-17 0 0 1" glow="color: #35cabb; intensity: 1"></a-entity>
+
+    <!-- holes -->
+    <a-entity id="hole" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="-8.5 .2 0" glow="color: #ff8080; intensity: 0.2" ></a-entity>
+    <a-entity id="hole2" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="-5.69273 0.1 -9.6" glow="color: #ff8080; intensity: 0.5"></a-entity>
+    <a-entity id="hole3" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="4.43 .2 3.4" glow="color: #ff8080; intensity: 0.5"></a-entity>
+    <a-entity id="hole4" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="3.17291 1.18422 -9.50164" glow="color: #ff8080; intensity: 0.5"></a-entity>-->
+    <a-entity id="hole5" static-body="sphereRadius: NaN" geometry="primitive: cylinder; height: 0.25; radius: 0.3" material="color: #ff8080" position="19.98954 1.18422 -3.17928" glow="color: #ff8080; intensity: 0.5"></a-entity>
+
+    
+    <!-- walls -->
+    <a-entity id="wall-1" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 50" material="color: #070212" position="14.06115 0 -10"></a-entity>
+    <a-entity id="wall-2" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 20" material="color: #070212" position="-10 0 -3.46584" rotation="0 90 0"></a-entity>
+    <a-entity id="wall-3" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 6.88" material="color: #070212" position="-5 0 2.385" rotation="0 90 0"></a-entity>
+   <a-entity id="wall-4" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 50" material="color: #070212" position="13.87312 0 6"></a-entity>
+    <a-entity id="wall-5" static-body="sphereRadius: NaN" geometry="depth: 1.6; height: 20; width: 13" material="color: #070212" position="10.60943 0 -3.76359" rotation="0 90 0"></a-entity>
+    <a-entity id="wall-6" static-body="sphereRadius: NaN" geometry="depth: 1.04; height: 20; width: 7.66" material="color: #070212" position="2.06465 0 -1.47134"></a-entity>
+    <a-entity id="wall-7" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 20" material="color: #070212" position="37.01776 0 -3.46584" rotation="0 90 0"></a-entity>
+    <a-entity id="wall-8" static-body="sphereRadius: NaN" geometry="depth: 1.18; height: 20; width: 5.12" material="color: #070212" position="-2.07708 0 -1.79285" rotation="0 90 0"></a-entity>
+    <a-entity id="wall-10" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 9.34" material="color: #070212" position="5.00348 0 5.59514" rotation="0 90 0"></a-entity>
+    <!--  -->
+    <a-entity id="corner_gaurd-1" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-1.77647 5 -9.9523" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-2" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-10.07508 5 -9.9523" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-3" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-10.07508 5 5.67228" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-4" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-4.97897 5 5.81963" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-5" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="5.04122 5 5.81963" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-6" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="-1.52056 5 -1.66597" rotation="0 132.97 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    <a-entity id="corner_gaurd-7" static-body="sphereRadius: NaN" geometry="depth: 1.29; height: 10; width: 1.43" material="color: #070212" position="9.89229 5 -10.34238" rotation="0 135 0" scale="1 1 1.02" light="type: directional; color: #252191; intensity:.5"></a-entity>
+    
+    
+    <!-- obstacles -->
+    
+      <!-- 2 -->
+   <a-ocean color="#013A40" depth="5" width="11" position="-7.37934 0.36 -7.06936" ocean="color: 13940; amplitudeVariance: .6" density="15" glow="color: #829FD9; intensity: 0.5"></a-ocean>
+      <!-- 3 -->
+      <a-entity geometry="primitive: cone; height: 1.86; radiusBottom: 0.36; radiusTop: 0" material="color: #5CE622" static-body="sphereRadius: NaN; shape: cylinder" id="spike-1" position="4.5146 0.98485 1.09861" glow="color: #BFFF59; intensity: .8"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.66; radiusTop: 0; height: 3.32" material="color: #DB006E" static-body="sphereRadius: NaN; shape: cylinder" id="spike-2" position="0 1.6785 -1" glow="color: #DB006E; intensity: 0.5"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.65; radiusTop: 0; height: 1.86" material="color: #FA8139" static-body="sphereRadius: NaN; shape: cylinder" id="spike-3" position="1.55617 0.99469 2.0077" glow="color: orange; intensity: 0.5"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.65; radiusTop: 0; height: 1.86" material="color: #5CE622" static-body="sphereRadius: NaN; shape: cylinder" id="spike-4" position="2.70738 0.96484 5.6437" glow="color: #BFFF59; intensity: 0.8"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.46; radiusTop: 0; height: 3.32" material="color: #FA8139" static-body="sphereRadius: NaN; shape: cylinder" id="spike-5" position="-0.57759 1.74734 4.4052" glow="color: orange; intensity: 0.5"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.17; radiusTop: 0; height: 1.86" material="color: #FA8139" static-body="sphereRadius: NaN; shape: cylinder" id="spike-6" position="-2.78341 0.95481 2.96488" glow="color: orange; intensity: 0.5"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.17; radiusTop: 0; height: 1.86" material="color: #DB006E" static-body="sphereRadius: NaN; shape: cylinder" id="spike-7" position="2.13159 0.95481 -0.5583" glow="color: #DB006E; intensity: 0.5"></a-entity>
+      <!-- ceiling spikes -->
+      <a-entity geometry="primitive: cone; height: 1.86; radiusBottom: 0.36; radiusTop: 0" material="color: #5CE622" static-body="sphereRadius: NaN; shape: cylinder" id="spike-8" position="4.5146 8.3 -0.10899" glow="color: #BFFF59; intensity: 0.8" rotation="180 0 0"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.66; radiusTop: 0; height: 3.32" material="color: #DB006E" static-body="sphereRadius: NaN; shape: cylinder" id="spike-9" position="2.63275 7.706 2.86213" glow="color: #DB006E; intensity: 0.5" rotation="180 0 0"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.46; radiusTop: 0; height: 3.32" material="color: #FA8139" static-body="sphereRadius: NaN; shape: cylinder" id="spike-10" position="-0.96006 7.7602 4.57877" glow="color: orange; intensity: 0.5" rotation="180 0 0"></a-entity>
+      <a-entity geometry="primitive: cone; radiusBottom: 0.17; radiusTop: 0; height: 1.86" material="color: #DB006E" static-body="sphereRadius: NaN; shape: cylinder" id="spike-11" position="0.26464 8.4069 -0.5583" glow="color: #DB006E; intensity: 0.5" rotation="180 0 0"></a-entity>
+      <a-entity geometry="primitive: cone; height: 1.86; radiusBottom: 0.36; radiusTop: 0" material="color: #5CE622" static-body="sphereRadius: NaN; shape: cylinder" id="spike-12" position="-2.33971 8.36272 2.4986" glow="color: #BFFF59; intensity: 0.8" rotation="180 0 0"></a-entity>
+      
+
+      <!-- 4 -->
+      <!-- <a-entity id="cone_hill" color="#55b989" rotation="180 0 180" static-body="sphereRadius: NaN; shape: cone" position="3.48409 0.55835 -8.17149" material="color: #55b989" geometry="primitive: cone; radiusBottom: 3.27; radiusTop: 1.65; height: 0"></a-entity> --><!-- Aframe does not appear to support static body on cones -->
+      <a-entity id="square_hill" position="3.18477 0.61407 -8.89722" material="color: #550d5e" geometry="height: 2.02; depth: 0.12; width: 1.98" static-body="sphereRadius: NaN" rotation="120.72999999999999 0 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <a-entity id="square_hill-2" position="2.19894 0.61407 -9.46636" material="color: #550d5e" geometry="height: 1.36; depth: 0.8; width: 1.08" static-body="sphereRadius: NaN" rotation="90 0 45" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <a-entity id="square_hill-3" position="4.27027 0.61407 -9.46636" material="color: #550d5e" geometry="height: 1.36; depth: 0.8; width: 1.08" static-body="sphereRadius: NaN" rotation="90 0 45" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <a-entity id="guide_rail" static-body="sphereRadius: NaN" geometry="depth: 0.09; height: 0.34; width: 2.72" material="color: #550d5e" position="4.44279 0.18067 -7.16876" rotation="0 110 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <a-entity id="guide_rail-2" static-body="sphereRadius: NaN" geometry="depth: 0.09; height: 0.34; width: 2.72" material="color: #550d5e" position="1.90511 0.2489 -7.07894" rotation="0 250.00000000000003 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <a-entity id="guide_rail-3" static-body="sphereRadius: NaN" geometry="depth: 1.36; height: 1.77; width: 1.15" material="color: #550d5e" position="3.20826 0.18067 -1.90361" rotation="0 135 0" glow="color: #A600BA; intensity: 0.5"></a-entity>
+      <!-- 5  chaos-->
+      
+
+
+    <!-- floor -->
+     <a-entity id="plane" static-body="sphereRadius: NaN; cylinderAxis: x" position="12.2122 0.1 -4" rotation="90 0 0" geometry="primitive: plane; width: 50; height: 50" material="color: #070212"></a-entity>
+     <a-entity id="ground" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 50" material="color: #070212" position="12.48097 -0.21047 -2.41101" rotation="90 0 0" light="type: directional; color: #252191; intensity:5"></a-entity>
+     <!-- roof -->
+     <a-entity id="roof" static-body="sphereRadius: NaN" geometry="depth: 0.42; height: 20; width: 50" material="color: #070212" position="13.39967 9.54739 -2.41101" rotation="90 0 0" light="type: directional; color: #252191; intensity:5"></a-entity>
+
+   
+
+  </a-scene>
+
+</body>
+
+</html>
+

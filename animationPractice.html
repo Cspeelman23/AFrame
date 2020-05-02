@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ECS - A-Frame School</title>
+    <meta name="description" content="ECS - A-Frame School">
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script> 
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
+
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+      </a-assets>
+      
+<!--       <a-entity id="lightSphere" geometry="primitive: sphere; radius: 0.2;" color=" #F55" material=" shader: flat;" position="0 3 -4" light="type: point"
+                ></a-entity> -->
+<a-entity id="lightSphere2" geometry="primitive: sphere; radius: 0.2" material="shader: flat" light="type: point; color: #FFF" position="-4 3 -4"
+               animation="property: position; to: 4 2.8 -4; dir: alternate; loop: 1"></a-entity>
+
+<!--       <a-entity geometry="primitive: box" material="color: red" position="0 0.5 -10" animation="property: material.color; dir: alternate; dur: 1000;
+                           easing: linear; loop: true; to: #FF5"></a-entity> -->
+        <a-entity id="red_box" geometry="primitive: box" material="color: #F55" position="0 0.5 -10"
+              animation="property: material.color; to: #55F; dir: alternate; dur: 200; loop: true"></a-entity>
+    
+        <a-entity geometry="primitive: box" material="color: #FF5500" position="-2 0.5 -8"
+               animation__color="property: material.color; to: #FF5; dir: alternate; dur: 1000;
+                                easing: easeInOutSine; loop: true" ></a-entity>
+   
+      <a-entity geometry="primitive: box" material="color: yellow" position="2 0.5 -8"></a-entity>
+      <a-entity geometry="primitive: box" material="color: green" position="-4 0.5 -6"></a-entity>
+      <a-entity geometry="primitive: box" material="color: blue" position="4 0.5 -6"></a-entity>
+
+      <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat"></a-entity>
+
+      <a-entity light="type: ambient; color: #222"></a-entity>
+      <a-entity light="type: directional; color: #111" position="-1 1 0"></a-entity>
+
+      <a-entity id="ground" geometry="primitive: plane; height: 100; width: 100"
+                material="src: #groundTexture" rotation="-90 0 0"></a-entity>
+
+      <a-entity id="text" text="value: Show us the light!; color: #BBB" 
+                position="2.5 2 -8" scale="8 8 8"></a-entity>
+    </a-scene>
+
+  </body>
+</html>
